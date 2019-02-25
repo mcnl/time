@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title>JOY</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body>
+		<h2><center>Entrevista Inloco</center></h2>
+		<h1><center><a id="day"></a> Dias <a id="hour">Hora</a>:<a id="minute">Minuto</a>:<a id="second">Segundo</a>
+		<script>
+			function andar(){
+				var dat = new Date();
+				var dat2 = new Date("Mon Jun 6 2017 12:09:00 GMT-0300 (Hora oficial do Brasil)");
+				if(dat==dat2){
+					document.body.style.background = "red";
+				}
+				var date1 = new Date();
+				var date2 = new Date("Mon Mar 11 2019 14:00:00 GMT-0300 (Hora oficial do Brasil)");
+				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+				var dia = Math.floor(timeDiff/86400000);
+				var aux = timeDiff%86400000;
+				var hora = Math.floor(aux/3600000);
+				var aux1 = aux%3600000;
+				var min = Math.floor(aux1/60000);
+				var aux2 = aux1%60000;
+				var sec = Math.floor(aux2/1000);
+				var msec = aux2%1000;
+				document.getElementById("day").innerHTML = dia;
+				document.getElementById("hour").innerHTML = hora;
+				document.getElementById("minute").innerHTML = min;
+				if(sec>9){
+					document.getElementById("second").innerHTML = sec;
+				}
+				else{
+					var auxsec = "0" + sec;
+					document.getElementById("second").innerHTML = auxsec;
+				}
+				
+			}
+			setInterval(andar,5);
+		</script>
+	</body>
+</html>
